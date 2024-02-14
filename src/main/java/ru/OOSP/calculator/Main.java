@@ -1,15 +1,17 @@
 package ru.OOSP.calculator;
 
-import static ru.OOSP.calculator.Calculator.calc;
-import static ru.OOSP.calculator.Calculator.getInt;
-import static ru.OOSP.calculator.Calculator.getOperation;
+import ru.OOSP.calculator.Controller.CalculatorController;
+import ru.OOSP.calculator.Model.CalculatorModel;
+import ru.OOSP.calculator.View.CalculatorView;
 
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        int num1 = getInt();
-        int num2 = getInt();
-        char operation = getOperation();
-        int result = calc(num1,num2,operation);
-        System.out.println("рузультат " + result);
+        CalculatorModel model = new CalculatorModel();
+        CalculatorView view = new CalculatorView(new Scanner(System.in));
+        CalculatorController controller = new CalculatorController(model, view);
+
+        controller.processEquation();
+
     }
 }
